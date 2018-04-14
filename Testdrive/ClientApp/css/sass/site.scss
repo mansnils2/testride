@@ -1,0 +1,18 @@
+﻿@import "_brand.scss";
+
+// body style, 100% to allow for menu styles
+html, body {
+    height: 100%;
+    background: $white;
+}
+
+.absolute-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.graphiql-container .editorWrap {
+    overflow-y: hidden;
+}

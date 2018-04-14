@@ -6,7 +6,7 @@
 			headers: {
 				"Content-Type": 'application/json'
 			},
-			credentials: 'include'
+			
 		}).then(response => successCallback(response))
 		.catch(error => errorCallback(error));
 }

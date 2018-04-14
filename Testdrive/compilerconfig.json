@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "ClientApp/css/sass/spinners.css",
+    "inputFile": "ClientApp/css/sass/spinners.scss"
+  },
+  {
+    "outputFile": "ClientApp/css/sass/tables.css",
+    "inputFile": "ClientApp/css/sass/tables.scss"
+  },
+  {
+    "outputFile": "ClientApp/css/sass/site.css",
+    "inputFile": "ClientApp/css/sass/site.scss"
+  },
+  {
+    "outputFile": "ClientApp/css/sass/colors.css",
+    "inputFile": "ClientApp/css/sass/colors.scss"
+  }
+]
