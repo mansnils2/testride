@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace Testdrive
 {
@@ -13,24 +11,24 @@ namespace Testdrive
         }
 
         public static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(ConfigConfiguration)
+                //.ConfigureAppConfiguration(ConfigConfiguration)
                 .UseStartup<Startup>()
                 .Build();
 
-        private static void ConfigConfiguration(WebHostBuilderContext webHostBuilderContext,
-            IConfigurationBuilder builder)
-        {
-            builder.SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", false, true)
-                .AddEnvironmentVariables();
+        //private static void ConfigConfiguration(WebHostBuilderContext webHostBuilderContext,
+        //    IConfigurationBuilder builder)
+        //{
+        //    builder.SetBasePath(Directory.GetCurrentDirectory())
+        //        .AddJsonFile("appsettings.json", false, true)
+        //        .AddEnvironmentVariables();
 
-            var config = builder.Build();
+        //    var config = builder.Build();
 
-            builder.AddAzureKeyVault(
-                $"https://{config["AzureKeyVault:Vault"]}.vault.azure.net/",
-                config["AzureKeyVault:ClientId"],
-                config["AzureKeyVault:ClientSecret"]
-            );
-        }
+        //    builder.AddAzureKeyVault(
+        //        $"https://{config["AzureKeyVault:Vault"]}.vault.azure.net/",
+        //        config["AzureKeyVault:ClientId"],
+        //        config["AzureKeyVault:ClientSecret"]
+        //    );
+        //}
     }
 }

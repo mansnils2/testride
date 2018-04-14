@@ -4,6 +4,8 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as StoreModule from './store';
 import { IApplicationState, reducers } from './store';
 import { History } from 'history';
+import { persistStore, persistReducer, BaseReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 export default function configureStore(history: History, initialState?: IApplicationState) {
     // Build middleware. These are functions that can process the actions before they reach the store.
@@ -15,9 +17,16 @@ export default function configureStore(history: History, initialState?: IApplica
         devToolsExtension ? devToolsExtension() : <TS>(next: StoreEnhancerStoreCreator<TS>) => next
     )(createStore);
 
+    const persistConfig = {
+        key: 'root',
+        storage
+    }
+
     // Combine all reducers and instantiate the app-wide store instance
-    const allReducers = buildRootReducer(reducers);
-    const store = createStoreWithMiddleware(allReducers, (initialState) as any) as Store<IApplicationState>;
+    const build = buildRootReducer(reducers) as BaseReducer<any, any>;
+    const persistedReducer = persistReducer(persistConfig, build);
+
+    const store = createStoreWithMiddleware(persistedReducer, initialState) as Store<IApplicationState>;
 
     // Enable Webpack hot module replacement for reducers
     if (module.hot) {
@@ -27,7 +36,8 @@ export default function configureStore(history: History, initialState?: IApplica
         });
     }
 
-    return store;
+    const persistor = persistStore(store);
+    return { persistor, store };
 }
 
 function buildRootReducer(allReducers: ReducersMapObject) {

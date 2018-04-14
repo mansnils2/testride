@@ -32,18 +32,20 @@ namespace Testdrive.Extensions
 
         public static void AddConfiguredMvc(this IServiceCollection services)
         {
-            services.AddMvc(config =>
-            {
-                // only allow authenticated users
-                var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
+            //services.AddMvc(config =>
+            //{
+            //    // only allow authenticated users
+            //    var policy = new AuthorizationPolicyBuilder()
+            //        .RequireAuthenticatedUser()
+            //        .Build();
 
-                config.Filters.Add(new AuthorizeFilter(policy));
-            }).AddJsonOptions(options =>
-            {
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            });
+            //    config.Filters.Add(new AuthorizeFilter(policy));
+            //}).AddJsonOptions(options =>
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
         }
 
         public static void AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration)

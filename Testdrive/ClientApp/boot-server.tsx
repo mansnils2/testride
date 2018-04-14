@@ -15,14 +15,14 @@ export default createServerRenderer(params => {
         const basename = params.baseUrl.substring(0, params.baseUrl.length - 1); // Remove trailing slash
         const urlAfterBasename = params.url.substring(basename.length);
         const store = configureStore(createMemoryHistory());
-        store.dispatch(replace(urlAfterBasename));
+        store.store.dispatch(replace(urlAfterBasename));
 
         // Prepare an instance of the application and perform an inital render that will
         // cause any async tasks (e.g., data access) to begin
         const routerContext: any = {};
         const app = (
-            <Provider store={ store }>
-                <StaticRouter basename={ basename } context={ routerContext } location={ params.location.path } children={ routes } />
+            <Provider store={store.store}>
+                <StaticRouter basename={basename} context={routerContext} location={params.location.path} children={routes} />
             </Provider>
         );
         renderToString(app);
@@ -32,13 +32,13 @@ export default createServerRenderer(params => {
             resolve({ redirectUrl: routerContext.url });
             return;
         }
-        
+
         // Once any async tasks are done, we can perform the final render
         // We also send the redux store state, so the client can continue execution where the server left off
         params.domainTasks.then(() => {
             resolve({
                 html: renderToString(app),
-                globals: { initialReduxState: store.getState() }
+                globals: { initialReduxState: store.store.getState() }
             });
         }, reject); // Also propagate any errors back into the host application
     });

@@ -29,7 +29,7 @@ namespace Testdrive
             services.AddConfiguredMvc();
 
             // add auth0 bearer-authentication from our specs
-            services.AddBearerAuthentication(Configuration);
+            //services.AddBearerAuthentication(Configuration);
 
             // add all internal services
             services.AddInternalServices();
@@ -59,7 +59,7 @@ namespace Testdrive
                 app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
             }
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

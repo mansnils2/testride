@@ -30,12 +30,12 @@ module.exports = (env) => {
                 'redux-thunk',
                 'react-router-redux',
                 'jquery'
-            ],
+            ]
         },
         output: {
             publicPath: 'dist/',
             filename: '[name].js',
-            library: '[name]_[hash]',
+            library: '[name]_[hash]'
         },
         plugins: [
             new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
@@ -69,7 +69,7 @@ module.exports = (env) => {
         resolve: { mainFields: ['main'] },
         output: {
             path: path.join(__dirname, 'ClientApp', 'dist'),
-            libraryTarget: 'commonjs2',
+            libraryTarget: 'commonjs2'
         },
         module: {
             rules: [ { test: /\.css(\?|$)/, use: isDevBuild ? 'css-loader' : 'css-loader?minimize' } ]
