@@ -1,9 +1,10 @@
-﻿using Testdrive.Graph.Repositories.Testdrives;
-using Testdrive.Graph.Types;
+﻿using TestRide.Graph.Repositories.Testdrives;
+using TestRide.Graph.Types;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Queries.Children
+namespace TestRide.Graph.Queries.Children
 {
-    public class TestdriveQuery : BaseQuery<TestdriveType, Testdrive.Models.Testdrive, int>
+    public class TestdriveQuery : BaseQuery<TestdriveType, Testdrive, int>
     {
         public TestdriveQuery(ITestdriveRepository repo) : base("testdrive", "testdrives", repo) { }
     }

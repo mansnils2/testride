@@ -1,4 +1,6 @@
-﻿namespace Testdrive.Graph.Repositories.Testdrives
+﻿using TestRide.Models;
+
+namespace TestRide.Graph.Repositories.Testdrives
 {
-    public interface ITestdriveRepository : IBaseRepository<Testdrive.Models.Testdrive, int> { }
+    public interface ITestdriveRepository : IBaseRepository<Testdrive, int> { }
 }

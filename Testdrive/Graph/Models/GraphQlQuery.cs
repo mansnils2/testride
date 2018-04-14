@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Testdrive.Graph.Models
+namespace TestRide.Graph.Models
 {
     public class GraphQlQuery
     {

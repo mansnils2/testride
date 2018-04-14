@@ -1,7 +1,7 @@
-﻿using Testdrive.Data;
-using Testdrive.Models;
+﻿using TestRide.Data;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Repositories.Cars
+namespace TestRide.Graph.Repositories.Cars
 {
     public class CarRepository : BaseRepository<Car, int>, ICarRepository
     {

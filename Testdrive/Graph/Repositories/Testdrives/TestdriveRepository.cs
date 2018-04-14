@@ -1,8 +1,9 @@
-﻿using Testdrive.Data;
+﻿using TestRide.Data;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Repositories.Testdrives
+namespace TestRide.Graph.Repositories.Testdrives
 {
-    public class TestdriveRepository : BaseRepository<Testdrive.Models.Testdrive, int>, ITestdriveRepository
+    public class TestdriveRepository : BaseRepository<Testdrive, int>, ITestdriveRepository
     {
         public TestdriveRepository(ApplicationDbContext db) : base(db) { }
     }

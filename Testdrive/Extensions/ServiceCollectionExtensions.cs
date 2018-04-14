@@ -1,25 +1,24 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Testdrive.Data;
-using Testdrive.Graph.GraphContext;
-using Testdrive.Graph.Mutations;
-using Testdrive.Graph.Queries;
-using Testdrive.Graph.Queries.Children;
-using Testdrive.Graph.Repositories.Cars;
-using Testdrive.Graph.Repositories.Customers;
-using Testdrive.Graph.Repositories.Facilities;
-using Testdrive.Graph.Repositories.Testdrives;
-using Testdrive.Graph.Repositories.Users;
-using Testdrive.Services.Secrets;
+using TestRide.Data;
+using TestRide.Graph.GraphContext;
+using TestRide.Graph.Mutations;
+using TestRide.Graph.Mutations.Children;
+using TestRide.Graph.Queries;
+using TestRide.Graph.Queries.Children;
+using TestRide.Graph.Repositories.Cars;
+using TestRide.Graph.Repositories.Customers;
+using TestRide.Graph.Repositories.Facilities;
+using TestRide.Graph.Repositories.Testdrives;
+using TestRide.Graph.Repositories.Users;
+using TestRide.Services.Secrets;
 
-namespace Testdrive.Extensions
+namespace TestRide.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -48,20 +47,6 @@ namespace Testdrive.Extensions
                 });
         }
 
-        public static void AddBearerAuthentication(this IServiceCollection services, IConfiguration configuration)
-        {
-            var domain = $"https://{configuration["Auth0:Domain"]}/";
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.Authority = domain;
-                options.Audience = configuration["Auth0:ApiIdentifier"];
-            });
-        }
-
         public static void RequireHttps(this IServiceCollection services)
         {
             services.Configure<MvcOptions>(options => { options.Filters.Add(new RequireHttpsAttribute()); });
@@ -70,6 +55,8 @@ namespace Testdrive.Extensions
         public static void AddGraphQl(this IServiceCollection services)
         {
             // mutations
+            services.AddTransient<TestdriveMutation>();
+
             services.AddTransient<ParentMutation>();
 
             // queries

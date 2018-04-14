@@ -1,4 +1,4 @@
-﻿namespace Testdrive.Graph.Models
+﻿namespace TestRide.Graph.Models
 {
     public interface IEntity<TKey>
     {

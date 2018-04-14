@@ -1,4 +1,4 @@
-﻿namespace Testdrive.Services.Secrets
+﻿namespace TestRide.Services.Secrets
 {
     public interface ISecretHandler
     {

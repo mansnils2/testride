@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Testdrive.Extensions
+namespace TestRide.Extensions
 {
     public static class StringExtensions
     {

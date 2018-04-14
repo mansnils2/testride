@@ -1,8 +1,8 @@
-﻿using Testdrive.Graph.Repositories.Facilities;
-using Testdrive.Graph.Types;
-using Testdrive.Models;
+﻿using TestRide.Graph.Repositories.Facilities;
+using TestRide.Graph.Types;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Queries.Children
+namespace TestRide.Graph.Queries.Children
 {
     public class FacilityQuery : BaseQuery<FacilityType, Facility, int>
     {

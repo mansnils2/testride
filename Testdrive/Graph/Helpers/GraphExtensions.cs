@@ -3,9 +3,9 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using GraphQL;
 using GraphQL.Types;
-using Testdrive.Graph.Helpers.Models;
+using TestRide.Graph.Helpers.Models;
 
-namespace Testdrive.Graph.Helpers
+namespace TestRide.Graph.Helpers
 {
     public static class GraphExtensions
     {

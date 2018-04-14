@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using GraphQL;
 using Microsoft.EntityFrameworkCore;
-using Testdrive.Data;
-using Testdrive.Graph.Models;
-using System.Linq.Dynamic.Core;
+using TestRide.Data;
+using TestRide.Graph.Models;
 
-namespace Testdrive.Graph.Repositories
+namespace TestRide.Graph.Repositories
 {
     public abstract class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> where TEntity : class, IEntity<TKey>, new()
     {

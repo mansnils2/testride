@@ -1,6 +1,6 @@
-﻿using Testdrive.Models;
+﻿using TestRide.Models;
 
-namespace Testdrive.Graph.Repositories.Facilities
+namespace TestRide.Graph.Repositories.Facilities
 {
     public interface IFacilityRepository : IBaseRepository<Facility, int> { }
 }

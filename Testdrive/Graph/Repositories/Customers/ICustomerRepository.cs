@@ -1,6 +1,6 @@
-﻿using Testdrive.Models;
+﻿using TestRide.Models;
 
-namespace Testdrive.Graph.Repositories.Customers
+namespace TestRide.Graph.Repositories.Customers
 {
     public interface ICustomerRepository : IBaseRepository<Customer, int> { }
 }

@@ -1,7 +1,7 @@
 ﻿using GraphQL.Types;
-using Testdrive.Models;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Types
+namespace TestRide.Graph.Types
 {
     public class UserType : ObjectGraphType<User>
     {

@@ -1,15 +1,17 @@
-﻿using GraphQL.Types;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GraphQL.Types;
+using TestRide.Graph.Mutations.Children;
 
-namespace Testdrive.Graph.Mutations
+namespace TestRide.Graph.Mutations
 {
     public class ParentMutation : ObjectGraphType
     {
-        public ParentMutation()
+        public ParentMutation(
+            TestdriveMutation testdrive)
         {
             var children = new List<dynamic>
             {
-                
+                testdrive
             };
 
             foreach (var child in children)

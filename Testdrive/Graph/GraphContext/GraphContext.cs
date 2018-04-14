@@ -1,36 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using GraphQL;
 using GraphQL.Types;
-using GraphQL.Validation;
-using Testdrive.Graph.Models;
-using Testdrive.Graph.Mutations;
-using Testdrive.Graph.Queries;
+using TestRide.Graph.Models;
+using TestRide.Graph.Mutations;
+using TestRide.Graph.Queries;
 
-namespace Testdrive.Graph.GraphContext
+namespace TestRide.Graph.GraphContext
 {
     public class GraphContext : IGraphContext
     {
         private readonly Schema _schema;
-        private readonly IValidationRule _authorization;
 
         public GraphContext(
             ParentQuery queries,
-            ParentMutation mutations,
-            IValidationRule authorization)
+            ParentMutation mutations)
         {
-            _schema = new Schema { Query = queries, Mutation = mutations };
-            _authorization = authorization;
+            _schema = new Schema {Query = queries, Mutation = mutations};
         }
 
         public Task<ExecutionResult> QueryAsync(GraphQlQuery query)
         {
-            var rules = new List<IValidationRule> { _authorization };
             return new DocumentExecuter().ExecuteAsync(_ =>
             {
                 _.Schema = _schema;
                 _.Query = query.Query;
-                _.ValidationRules = rules;
             });
         }
     }

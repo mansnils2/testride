@@ -1,7 +1,7 @@
-﻿using Testdrive.Data;
-using Testdrive.Models;
+﻿using TestRide.Data;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Repositories.Customers
+namespace TestRide.Graph.Repositories.Customers
 {
     public class CustomerRepository : BaseRepository<Customer, int>, ICustomerRepository
     {

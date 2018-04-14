@@ -1,8 +1,9 @@
 ﻿using GraphQL.Types;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Types
+namespace TestRide.Graph.Types
 {
-    public class TestdriveType : ObjectGraphType<Testdrive.Models.Testdrive>
+    public class TestdriveType : ObjectGraphType<Testdrive>
     {
         public TestdriveType()
         {

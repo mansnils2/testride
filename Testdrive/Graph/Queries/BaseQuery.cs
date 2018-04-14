@@ -1,9 +1,9 @@
 ﻿using GraphQL;
 using GraphQL.Types;
-using Testdrive.Extensions;
-using Testdrive.Graph.Repositories;
+using TestRide.Extensions;
+using TestRide.Graph.Repositories;
 
-namespace Testdrive.Graph.Queries
+namespace TestRide.Graph.Queries
 {
     public class BaseQuery<T, TEntity, TKey> : ObjectGraphType where T : ObjectGraphType<TEntity> where TEntity : class
     {

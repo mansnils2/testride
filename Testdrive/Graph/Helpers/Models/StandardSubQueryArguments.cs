@@ -1,4 +1,4 @@
-﻿namespace Testdrive.Graph.Helpers.Models
+﻿namespace TestRide.Graph.Helpers.Models
 {
     public class StandardSubQueryArguments
     {

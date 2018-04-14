@@ -5,6 +5,8 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
+    <AssemblyName>TestRide</AssemblyName>
+    <RootNamespace>TestRide</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Graph\Mutations\Children\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

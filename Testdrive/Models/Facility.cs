@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Testdrive.Graph.Models;
+using TestRide.Graph.Models;
 
-namespace Testdrive.Models
+namespace TestRide.Models
 {
     public class Facility : IEntity<int>
     {

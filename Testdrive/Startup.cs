@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Testdrive.Extensions;
+using TestRide.Extensions;
 
-namespace Testdrive
+namespace TestRide
 {
     public class Startup
     {

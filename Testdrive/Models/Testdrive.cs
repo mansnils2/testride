@@ -1,6 +1,6 @@
-﻿using Testdrive.Graph.Models;
+﻿using TestRide.Graph.Models;
 
-namespace Testdrive.Models
+namespace TestRide.Models
 {
     public class Testdrive : IEntity<int>
     {

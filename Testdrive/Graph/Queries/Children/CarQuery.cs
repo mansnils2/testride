@@ -1,8 +1,8 @@
-﻿using Testdrive.Graph.Repositories.Cars;
-using Testdrive.Graph.Types;
-using Testdrive.Models;
+﻿using TestRide.Graph.Repositories.Cars;
+using TestRide.Graph.Types;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Queries.Children
+namespace TestRide.Graph.Queries.Children
 {
     public class CarQuery : BaseQuery<CarType, Car, int>
     {

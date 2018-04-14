@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Testdrive.Services.Secrets
+namespace TestRide.Services.Secrets
 {
     public class SecretHandler : ISecretHandler
     {

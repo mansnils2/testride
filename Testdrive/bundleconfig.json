@@ -2,7 +2,6 @@
   {
     "outputFileName": "ClientApp/css/site.css",
     "inputFiles": [
-      "node_modules/bootstrap/dist/css/bootstrap.min.css",
       "node_modules/graphiql/graphiql.css",
       "ClientApp/css/sass/colors.css",
       "ClientApp/css/sass/spinners.css",

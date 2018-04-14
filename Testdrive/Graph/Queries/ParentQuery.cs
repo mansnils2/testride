@@ -1,8 +1,8 @@
-﻿using GraphQL.Types;
-using System.Collections.Generic;
-using Testdrive.Graph.Queries.Children;
+﻿using System.Collections.Generic;
+using GraphQL.Types;
+using TestRide.Graph.Queries.Children;
 
-namespace Testdrive.Graph.Queries
+namespace TestRide.Graph.Queries
 {
     public class ParentQuery : ObjectGraphType
     {

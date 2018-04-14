@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Testdrive.Models;
+using TestRide.Models;
 
-namespace Testdrive.Data
+namespace TestRide.Data
 {
     public class ApplicationDbContext : DbContext
     {

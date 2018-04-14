@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Testdrive.Graph.Repositories
+namespace TestRide.Graph.Repositories
 {
     public interface IBaseRepository<TEntity, in TKey> where TEntity : class
     {

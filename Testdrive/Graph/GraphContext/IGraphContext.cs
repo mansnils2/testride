@@ -1,8 +1,8 @@
-﻿using GraphQL;
-using System.Threading.Tasks;
-using Testdrive.Graph.Models;
+﻿using System.Threading.Tasks;
+using GraphQL;
+using TestRide.Graph.Models;
 
-namespace Testdrive.Graph.GraphContext
+namespace TestRide.Graph.GraphContext
 {
     public interface IGraphContext
     {

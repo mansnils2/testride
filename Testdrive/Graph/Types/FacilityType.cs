@@ -1,8 +1,8 @@
 ﻿using GraphQL.Types;
-using Testdrive.Graph.Helpers;
-using Testdrive.Models;
+using TestRide.Graph.Helpers;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Types
+namespace TestRide.Graph.Types
 {
     public class FacilityType : ObjectGraphType<Facility>
     {

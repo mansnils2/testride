@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Testdrive.Graph.GraphContext;
-using Testdrive.Graph.Models;
+using Microsoft.AspNetCore.Mvc;
+using TestRide.Graph.GraphContext;
+using TestRide.Graph.Models;
 
-namespace Testdrive.Controllers
+namespace TestRide.Controllers
 {
     [Route("graph"), Produces("application/json")]
     public class GraphController : Controller

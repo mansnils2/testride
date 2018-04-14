@@ -1,8 +1,8 @@
-﻿using Testdrive.Graph.Repositories.Users;
-using Testdrive.Graph.Types;
-using Testdrive.Models;
+﻿using TestRide.Graph.Repositories.Users;
+using TestRide.Graph.Types;
+using TestRide.Models;
 
-namespace Testdrive.Graph.Queries.Children
+namespace TestRide.Graph.Queries.Children
 {
     public class UserQuery : BaseQuery<UserType, User, int>
     {
