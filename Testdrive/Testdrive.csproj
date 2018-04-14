@@ -23,8 +23,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\GraphQL\GraphiQl.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Graph\Mutations\Children\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\GraphQL\GraphiQl.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

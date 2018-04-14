@@ -1,7 +1,7 @@
 {
   "name": "testdrive",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "devDependencies": {
     "@types/history": "4.6.0",
     "@types/react": "15.0.35",
@@ -17,14 +17,15 @@
     "aspnet-webpack": "^2.0.1",
     "aspnet-webpack-react": "^3.0.0",
     "awesome-typescript-loader": "3.2.1",
-    "bootstrap": "3.3.7",
+    "bootstrap": "4.0.0",
     "css-loader": "0.28.4",
     "domain-task": "^3.0.3",
     "event-source-polyfill": "0.0.9",
     "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "0.11.2",
+    "graphiql": "^0.11.11",
     "history": "4.6.3",
-    "jquery": "3.2.1",
+    "jquery": "3.3.1",
     "node-noop": "1.0.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
@@ -40,5 +41,8 @@
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",
     "webpack-merge": "4.1.0"
+  },
+  "devResolutions": {
+    "graphql": "0.11.7"
   }
 }
