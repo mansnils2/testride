@@ -28,8 +28,8 @@ namespace TestRide
             // configure ride according to our specs
             services.AddConfiguredMvc();
 
-            // add auth0 bearer-authentication from our specs
-            //services.AddBearerAuthentication(Configuration);
+            // add auth0 authentication from our specs
+            services.AddAuth0(Configuration);
 
             // add all internal services
             services.AddInternalServices();
@@ -59,7 +59,7 @@ namespace TestRide
                 app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
             }
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
