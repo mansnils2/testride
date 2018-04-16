@@ -2,6 +2,7 @@
 import * as NavbarStore from '../../store/misc/Navbar';
 import { IApplicationState } from '../../store';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Greeting from './../Shared/Greeting';
 import Spinner from './../Shared/Spinner';
 import graphCall from '../../functions/GraphCall';
@@ -24,18 +25,18 @@ class NavigationBar extends React.Component<NavbarProps, { hasError: boolean, is
         const body = {
             query: `{
 						myMenuItems {
-							id
-							order
-							icon
-							color
-							title
-							link
-						}
+                            id
+                            title
+                            link
+                            icon
+                            color
+                            order
+                          }
 					}`
         };
         graphCall(
             body,
-            (result) => { console.log(result.data); this.setState({ links: result.data.myMenuItems, isLoading: false })},
+            (result) => this.setState({ links: result.data.myMenuItems, isLoading: false }),
             () => this.setState({ hasError: true, isLoading: false }));
     }
 
@@ -51,42 +52,26 @@ class NavigationBar extends React.Component<NavbarProps, { hasError: boolean, is
                 </div>
                 <div id="drawer-items">
                     <div id="drawer-links">
-                        {this.state.isLoading ? <Spinner class="mt-5" /> : this.state.hasError ? <Greeting title={'Inga menyval'} text={'Det uppstod ett fel och dina menyval kan inte visas.'} /> : this.renderItems()}
+                        {this.state.isLoading ? <Spinner class="mt-5" /> : this.state.hasError ? <Greeting title={'Inga menyval'} text={'Det uppstod ett fel och dina menyval kan inte visas.'} /> : this.startRenderItems()}
                     </div>
                 </div>
             </nav>
         </div>;
     }
 
-    renderItems() {
+    startRenderItems() {
         return (this.state.links.length > 0
-            ? this.state.links.map((link: any) => <div key={`link-${link.id}`} className="list-group mb-2">
-                {link.children.length > 0
-                    ? <div className="card p-2">
-                        <a data-toggle="collapse" data-parent="#accordion" href={`#${link.title.toLowerCase()}`
-                        } className="text-dark">
-                            <p className="mb-0"><i className={`fa ${link.icon} mr-2`} style={{ color: link.color }
-                            } aria-hidden="true"></i>{link.title}</p></a>
-                        <div id={`${link.title.toLowerCase()}`} className="collapse">
-                            <div className="card-body p-1">
-                                {link.children.map(
-                                    (child: any) => <a key={`child-${child.id}`} href={child.url
-                                    } className="text-muted m-0 d-block">
-                                        <span className="mb-0 pl-2"><i className="fa fa-angle-double-right mr-2 text-primary" aria-hidden="true"></i>{
-                                            child.title}</span>
-                                    </a>)}
-                            </div>
-                        </div>
-                    </div>
-                    : <a href={link.url
-                    } className="list-group-item list-group-item-action p-2">
-                        <p className="mb-0"><i className={`fa ${link.icon} mr-2`} style={{ color: link.color }
-                        } aria-hidden="true"></i>{link.title}</p>
-                    </a>
-                }
-            </div>)
+            ? this.renderLinks()
             : <Greeting title={'Inga menyval'} text={'Du har för tillfället inga menyval att visa'} />
         );
+    }
+
+    renderLinks() {
+        return this.state.links.map((link) => <div key={`link-${link.id}`} className="list-group mb-2">
+            <Link to={link.link} className="list-group-item list-group-item-action p-2">
+                <p className="mb-0"><i className={`fa ${link.icon} mr-2`} style={{ color: link.color }} aria-hidden="true"></i>{link.title}</p>
+            </Link>
+        </div>);
     }
 }
 // Wire up the React component to the Redux store

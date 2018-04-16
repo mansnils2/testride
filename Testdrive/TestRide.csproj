@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\components\GraphQL\GraphiQl.tsx" />
+    <None Remove="ClientApp\components\Testdrive\StartTestdrive.tsx" />
+    <None Remove="ClientApp\components\Testdrive\UserTestdrives.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +38,8 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\GraphQL\GraphiQl.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Testdrive\StartTestdrive.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Testdrive\UserTestdrives.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

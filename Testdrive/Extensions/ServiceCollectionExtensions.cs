@@ -126,6 +126,10 @@ namespace TestRide.Extensions
             // mutations
             services.AddTransient<TestdriveMutation>();
 
+            services.AddTransient<CarMutation>();
+
+            services.AddTransient<CustomerMutation>();
+
             services.AddTransient<ParentMutation>();
 
             // queries
