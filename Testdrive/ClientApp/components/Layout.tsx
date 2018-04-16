@@ -1,9 +1,12 @@
 import * as React from 'react';
+import NavigationBar from './Shared/Navbar';
+import { actionCreators } from '../store/misc/Navbar';
 
-export class Layout extends React.Component<{}, {}> {
-    render() {
-        return <div className="h-100">
-            {this.props.children}
-        </div>;
-    }
+export const Layout = ({ children }: { children?: React.ReactNode }) => {
+    return <div id="site">
+               <NavigationBar toggle={actionCreators.toggle}/>
+               <div id="page-content">
+                   {children}
+               </div>
+           </div>;
 }

@@ -9,9 +9,9 @@ namespace TestRide.Graph.Types
         {
             Field(u => u.Id);
 
-            Field(u => u.Name);
+            Field(u => u.ExternalId);
 
-            Field(u => u.FacilityId);
+            Field(u => u.Name);
 
             Field(u => u.Facility, type: typeof(FacilityType));
         }

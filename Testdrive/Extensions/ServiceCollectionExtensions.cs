@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +19,7 @@ using TestRide.Graph.Queries.Children;
 using TestRide.Graph.Repositories.Cars;
 using TestRide.Graph.Repositories.Customers;
 using TestRide.Graph.Repositories.Facilities;
+using TestRide.Graph.Repositories.MenuItems;
 using TestRide.Graph.Repositories.Testdrives;
 using TestRide.Graph.Repositories.Users;
 using TestRide.Services.Secrets;
@@ -76,6 +76,7 @@ namespace TestRide.Extensions
                     // Configure the scope
                     options.Scope.Clear();
                     options.Scope.Add("openid");
+                    options.Scope.Add("profile");
 
                     // Set the callback path, so Auth0 will call back to http://localhost:5000/signin-auth0 
                     // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard 
@@ -140,6 +141,8 @@ namespace TestRide.Extensions
 
             services.AddTransient<TestdriveQuery>();
 
+            services.AddTransient<MenuItemQuery>();
+
             // Repositories
             services.AddTransient<IGraphContext, GraphContext>();
 
@@ -152,6 +155,8 @@ namespace TestRide.Extensions
             services.AddTransient<ITestdriveRepository, TestdriveRepository>();
 
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+
+            services.AddTransient<IMenuItemRepository, MenuItemRepository>();
         }
 
         public static void AddInternalServices(this IServiceCollection services)

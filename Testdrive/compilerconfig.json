@@ -14,5 +14,13 @@
   {
     "outputFile": "ClientApp/css/sass/colors.css",
     "inputFile": "ClientApp/css/sass/colors.scss"
+  },
+  {
+    "outputFile": "ClientApp/css/sass/menu.css",
+    "inputFile": "ClientApp/css/sass/menu.scss"
+  },
+  {
+    "outputFile": "ClientApp/css/sass/misc.css",
+    "inputFile": "ClientApp/css/sass/misc.scss"
   }
 ]

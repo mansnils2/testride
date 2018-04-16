@@ -13,6 +13,8 @@ namespace TestRide.Data
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Models.Testdrive> Testdrives { get; set; }
+        public DbSet<Testdrive> Testdrives { get; set; }
+
+        public DbSet<MenuItem> MenuItems { get; set; }
     }
 }

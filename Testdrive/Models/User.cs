@@ -7,7 +7,11 @@ namespace TestRide.Models
     {
         public int Id { get; set; }
 
+        public string ExternalId { get; set; }
+
         public string Name { get; set; }
+
+        public Roles Roles { get; set; }
 
         public int FacilityId { get; set; }
 

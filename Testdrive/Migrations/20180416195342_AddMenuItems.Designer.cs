@@ -12,9 +12,10 @@ using TestRide.Models;
 namespace TestRide.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180416195342_AddMenuItems")]
+    partial class AddMenuItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,8 +92,6 @@ namespace TestRide.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ExternalId");
 
                     b.Property<int>("FacilityId");
 

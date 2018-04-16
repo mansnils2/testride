@@ -11,7 +11,8 @@ namespace TestRide.Graph.Queries
             CarQuery cars,
             CustomerQuery customers,
             UserQuery users,
-            TestdriveQuery testdrives)
+            TestdriveQuery testdrives,
+            MenuItemQuery menuItems)
         {
             var children = new List<dynamic>
             {
@@ -19,7 +20,8 @@ namespace TestRide.Graph.Queries
                 cars,
                 customers,
                 users,
-                testdrives
+                testdrives,
+                menuItems
             };
 
             foreach (var child in children)

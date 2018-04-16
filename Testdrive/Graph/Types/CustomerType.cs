@@ -10,9 +10,9 @@ namespace TestRide.Graph.Types
         {
             Field(c => c.Id);
 
-            Field(c => c.SocialSecurityNumber);
-
             Field(c => c.Name);
+
+            Field(c => c.SocialSecurityNumber);
 
             Field<ListGraphType<TestdriveType>>("testdrives",
                 arguments: GraphExtensions.GraphSubQueryArguments,
