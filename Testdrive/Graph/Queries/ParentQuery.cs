@@ -7,7 +7,6 @@ namespace TestRide.Graph.Queries
     public class ParentQuery : ObjectGraphType
     {
         public ParentQuery(
-            FacilityQuery facilities,
             CarQuery cars,
             CustomerQuery customers,
             UserQuery users,
@@ -16,7 +15,6 @@ namespace TestRide.Graph.Queries
         {
             var children = new List<dynamic>
             {
-                facilities,
                 cars,
                 customers,
                 users,

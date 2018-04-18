@@ -1,0 +1,11 @@
+﻿using System.Net;
+using System.Threading.Tasks;
+
+namespace TestRide.Services.PusherHandler
+{
+    public interface IPusherHandler
+    {
+        Task<HttpStatusCode> UpdateTestdrivesAsync(int? facilityId = null);
+        Task<HttpStatusCode> UpdateCustomerAsync(int id);
+    }
+}

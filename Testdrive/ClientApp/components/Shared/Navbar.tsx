@@ -47,8 +47,8 @@ class NavigationBar extends React.Component<NavbarProps, { hasError: boolean, is
             <header>
             </header>
             <nav id="drawer">
-                <div id="drawer-top">
-                    <p className="menu-text ml-3 mb-0 text-white text-center">TESTDRIVE</p>
+				<div id="drawer-top" className="text-center">
+					<p className="menu-text mb-0 text-white"><i className="fas fa-angle-double-right text-teal"></i> TESTDRIVE <i className="fas fa-angle-double-right text-blue"></i></p>
                 </div>
                 <div id="drawer-items">
                     <div id="drawer-links">
@@ -69,7 +69,7 @@ class NavigationBar extends React.Component<NavbarProps, { hasError: boolean, is
     renderLinks() {
         return this.state.links.map((link) => <div key={`link-${link.id}`} className="list-group mb-2">
             <Link to={link.link} className="list-group-item list-group-item-action p-2">
-                <p className="mb-0"><i className={`fa ${link.icon} mr-2`} style={{ color: link.color }} aria-hidden="true"></i>{link.title}</p>
+                <p className="mb-0"><i className={`${link.icon} mr-2`} style={{ color: link.color }} aria-hidden="true"></i>{link.title}</p>
             </Link>
         </div>);
     }

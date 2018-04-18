@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using TestRide.Graph.Repositories.Cars;
-using TestRide.Graph.Repositories.Testdrives;
 using TestRide.Graph.Types;
 using TestRide.Models;
 

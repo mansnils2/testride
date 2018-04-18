@@ -12,9 +12,10 @@ using TestRide.Models;
 namespace TestRide.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180418100038_RemoveFacilityId")]
+    partial class RemoveFacilityId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,21 +33,7 @@ namespace TestRide.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Car");
-                });
-
-            modelBuilder.Entity("TestRide.Models.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("SocialSecurityNumber");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Customer");
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("TestRide.Models.MenuItem", b =>
@@ -78,17 +65,11 @@ namespace TestRide.Migrations
 
                     b.Property<int?>("CarId");
 
-                    b.Property<int?>("CustomerId");
-
-                    b.Property<long>("Timestamp");
-
                     b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("CustomerId");
 
                     b.HasIndex("UserId");
 
@@ -116,10 +97,6 @@ namespace TestRide.Migrations
                     b.HasOne("TestRide.Models.Car", "Car")
                         .WithMany("Testdrives")
                         .HasForeignKey("CarId");
-
-                    b.HasOne("TestRide.Models.Customer", "Customer")
-                        .WithMany("Testdrives")
-                        .HasForeignKey("CustomerId");
 
                     b.HasOne("TestRide.Models.User", "User")
                         .WithMany("Testdrives")

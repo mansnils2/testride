@@ -5,6 +5,14 @@ namespace TestRide.Models
 {
     public class Car : IEntity<int>
     {
+        public Car() { }
+
+        public Car(string licenseplate, string carName)
+        {
+            Licenseplate = licenseplate;
+            CarName = carName;
+        }
+
         public int Id { get; set; }
 
         public string Licenseplate { get; set; }

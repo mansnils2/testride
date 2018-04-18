@@ -7,11 +7,15 @@ namespace TestRide.Graph.Types
     {
         public TestdriveType()
         {
-            Field(td => td.Id);
+            Field(t => t.Id);
 
-            Field(u => u.Car, type: typeof(CarType));
+            Field(t => t.Timestamp);
 
-            Field(u => u.User, type: typeof(UserType));
+            Field(t => t.Customer, type: typeof(CustomerType));
+
+            Field(t => t.Car, type: typeof(CarType));
+
+            Field(t => t.User, type: typeof(UserType));
         }
     }
 }

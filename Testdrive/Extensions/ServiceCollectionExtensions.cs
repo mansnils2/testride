@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
 using TestRide.Data;
 using TestRide.Graph.GraphContext;
 using TestRide.Graph.Mutations;
@@ -18,11 +18,9 @@ using TestRide.Graph.Queries;
 using TestRide.Graph.Queries.Children;
 using TestRide.Graph.Repositories.Cars;
 using TestRide.Graph.Repositories.Customers;
-using TestRide.Graph.Repositories.Facilities;
 using TestRide.Graph.Repositories.MenuItems;
 using TestRide.Graph.Repositories.Testdrives;
 using TestRide.Graph.Repositories.Users;
-using TestRide.Services.Secrets;
 
 namespace TestRide.Extensions
 {
@@ -64,11 +62,11 @@ namespace TestRide.Extensions
                 .AddOpenIdConnect("Auth0", options =>
                 {
                     // Set the authority to your Auth0 domain
-                    options.Authority = $"https://{configuration["Auth0:Domain"]}";
+                    options.Authority = $"https://{configuration.GetConnectionString("Auth0Domain")}";
 
                     // Configure the Auth0 Client ID and Client Secret
-                    options.ClientId = configuration["Auth0:ClientId"];
-                    options.ClientSecret = configuration["Auth0:ClientSecret"];
+                    options.ClientId = configuration.GetConnectionString("Auth0ClientId");
+                    options.ClientSecret = configuration.GetConnectionString("Auth0ClientSecret");
 
                     // Set response type to code
                     options.ResponseType = "code";
@@ -91,7 +89,7 @@ namespace TestRide.Extensions
                         OnRedirectToIdentityProviderForSignOut = context =>
                         {
                             var logoutUri =
-                                $"https://{configuration["Auth0:Domain"]}/v2/logout?client_id={configuration["Auth0:ClientId"]}";
+                                $"https://{configuration["Auth0Domain"]}/v2/logout?client_id={configuration.GetConnectionString("Auth0ClientId")}";
 
                             var postLogoutUri = context.Properties.RedirectUri;
                             if (!string.IsNullOrEmpty(postLogoutUri))
@@ -135,8 +133,6 @@ namespace TestRide.Extensions
             // queries
             services.AddTransient<ParentQuery>();
 
-            services.AddTransient<FacilityQuery>();
-
             services.AddTransient<UserQuery>();
 
             services.AddTransient<CarQuery>();
@@ -152,8 +148,6 @@ namespace TestRide.Extensions
 
             services.AddTransient<IUserRepository, UserRepository>();
 
-            services.AddTransient<IFacilityRepository, FacilityRepository>();
-
             services.AddTransient<ICarRepository, CarRepository>();
 
             services.AddTransient<ITestdriveRepository, TestdriveRepository>();
@@ -167,9 +161,6 @@ namespace TestRide.Extensions
         {
             // we inject the httpcontext to fetch users backend
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
-            // Secret handler for Azure Key Vault
-            services.AddTransient<ISecretHandler, SecretHandler>();
         }
     }
 }

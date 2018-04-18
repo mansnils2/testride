@@ -27,19 +27,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\Cars\CarDashboard.tsx" />
+    <None Remove="ClientApp\components\Customers\CustomerDashboard.tsx" />
     <None Remove="ClientApp\components\GraphQL\GraphiQl.tsx" />
     <None Remove="ClientApp\components\Testdrive\StartTestdrive.tsx" />
+    <None Remove="ClientApp\components\Testdrive\TestdriveDashboardParent.tsx" />
+    <None Remove="ClientApp\components\Testdrive\TestdriveOverview.tsx" />
     <None Remove="ClientApp\components\Testdrive\UserTestdrives.tsx" />
+    <None Remove="ClientApp\functions\getCarInfo.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\Cars\CarDashboard.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Customers\CustomerDashboard.tsx" />
     <TypeScriptCompile Include="ClientApp\components\GraphQL\GraphiQl.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Testdrive\StartTestdrive.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Testdrive\TestdriveOverview.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Testdrive\TestdriveDashboardParent.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Testdrive\UserTestdrives.tsx" />
+    <TypeScriptCompile Include="ClientApp\functions\getCarInfo.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

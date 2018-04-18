@@ -13,10 +13,6 @@ namespace TestRide.Models
 
         public Roles Roles { get; set; }
 
-        public int FacilityId { get; set; }
-
-        public virtual Facility Facility { get; set; }
-
         public virtual ICollection<Testdrive> Testdrives { get; set; }
     }
 }

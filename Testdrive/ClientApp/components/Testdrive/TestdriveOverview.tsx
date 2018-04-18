@@ -1,10 +1,10 @@
 ﻿import * as React from 'react';
 import TestdriveDashboardParent from './TestdriveDashboardParent';
 
-export const UserTestdrives = () => {
-	const query = 
+export const TestdriveOverview = () => {
+	const query =
 		`{
-			myTestdrives {
+			testdrives(include: "Car,Customer") {
 				id
 				timestamp
 				car {
@@ -16,5 +16,5 @@ export const UserTestdrives = () => {
 				}
 			}
 		}`;
-	return <TestdriveDashboardParent query={query} dataset={'myTestdrives'}/>;
+	return <TestdriveDashboardParent query={query} dataset={'testdrives'} />;
 }

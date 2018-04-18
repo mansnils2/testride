@@ -11,6 +11,8 @@ import * as RoutesModule from './routes';
 let routes = RoutesModule.routes;
 import { PersistGate } from 'redux-persist/integration/react';
 import Spinner from './Components/Shared/Spinner';
+import { setPusherClient } from 'react-pusher';
+import Pusher from 'pusher-js';
 
 // Create browser history to use in the Redux store
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')!;
@@ -23,6 +25,14 @@ const store = configureStore(history, initialState);
 function renderApp() {
     // This code starts up the React app when it runs in a browser. It sets up the routing configuration
     // and injects the app into a DOM element.
+	const pusherClient = new Pusher('',
+		{
+			cluster: 'eu',
+			encrypted: true
+		});
+
+	setPusherClient(pusherClient);
+
     ReactDOM.render(
         <AppContainer>
             <Provider store={store.store}>

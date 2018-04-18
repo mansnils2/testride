@@ -1,4 +1,5 @@
 ﻿using GraphQL.Types;
+using TestRide.Graph.Helpers;
 using TestRide.Models;
 
 namespace TestRide.Graph.Types
@@ -13,7 +14,9 @@ namespace TestRide.Graph.Types
 
             Field(u => u.Name);
 
-            Field(u => u.Facility, type: typeof(FacilityType));
+            Field<ListGraphType<TestdriveType>>("testdrives",
+                arguments: GraphExtensions.GraphSubQueryArguments,
+                resolve: context => context.Source.Testdrives.ResolveFields(context.GetStandardSubQueryArguments()));
         }
     }
 }

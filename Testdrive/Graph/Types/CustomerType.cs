@@ -14,6 +14,8 @@ namespace TestRide.Graph.Types
 
             Field(c => c.SocialSecurityNumber);
 
+            Field("countOfTestdrives", c => c.Testdrives.Count);
+
             Field<ListGraphType<TestdriveType>>("testdrives",
                 arguments: GraphExtensions.GraphSubQueryArguments,
                 resolve: context => context.Source.Testdrives.ResolveFields(context.GetStandardSubQueryArguments()));

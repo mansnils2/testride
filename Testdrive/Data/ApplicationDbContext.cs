@@ -7,9 +7,9 @@ namespace TestRide.Data
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Facility> Facilities { get; set; }
-
         public DbSet<Car> Cars { get; set; }
+
+        public DbSet<Car> Customers { get; set; }
 
         public DbSet<User> Users { get; set; }
 
