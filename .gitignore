@@ -262,3 +262,4 @@ __pycache__/
 /Testdrive/authsettings.json
 Testdrive/.vscode
 /Testdrive/localsettings.json
+.vscode
