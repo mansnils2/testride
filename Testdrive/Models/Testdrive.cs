@@ -10,7 +10,7 @@ namespace TestRide.Models
             Timestamp = UnixTime.Now();
         }
 
-        public void AddData(Customer customer, User user, Car car)
+        public void AddData(Customer customer, Car car, User user)
         {
             Customer = customer;
             Car = car;

@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\components\Cars\CarDashboard.tsx" />
     <None Remove="ClientApp\components\Customers\CustomerDashboard.tsx" />
     <None Remove="ClientApp\components\GraphQL\GraphiQl.tsx" />
     <None Remove="ClientApp\components\Testdrive\StartTestdrive.tsx" />
@@ -39,7 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\Cars\CarDashboard.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Customers\CustomerDashboard.tsx" />
     <TypeScriptCompile Include="ClientApp\components\GraphQL\GraphiQl.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Testdrive\StartTestdrive.tsx" />

@@ -20,6 +20,7 @@
     "awesome-typescript-loader": "3.2.1",
     "bootstrap": "4.0.0",
     "css-loader": "0.28.4",
+    "date-and-time": "^0.6.2",
     "domain-task": "^3.0.3",
     "event-source-polyfill": "0.0.9",
     "extract-text-webpack-plugin": "2.1.2",

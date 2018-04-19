@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -43,41 +42,26 @@ namespace TestRide.Graph.Repositories.Testdrives
 
         public async Task<Response> AddTestdriveAsync(string licenseplate, string carName)
         {
-            
-
-            try {
-                var car = _db.Cars.AsNoTracking().FirstOrDefault(c => c.Licenseplate == licenseplate);
-                if (car == null)
-                {
-                    car = new Car(licenseplate, carName);
-                    await _db.Cars.AddAsync(car);
-                    await _db.SaveChangesAsync();
-                }
-
-                var user = await _db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.ExternalId == _http.CurrentUser());
-                if (user == null) return new Response("Privilegiehöjning krävs.", hasError: true);
-
-                var customer = new Customer("Namn Namnson", "Saknas");
-                await _db.Customers.AddAsync(customer);
-                await _db.SaveChangesAsync();
-
-                var testdrive = new Testdrive();
-                await _db.AddAsync(testdrive);
-                await _db.SaveChangesAsync();
-
-                testdrive.AddData(customer, user, car);
-                var save = await _db.SaveChangesAsync() == 0;
-
-                await _pusher.UpdateTestdrivesAsync();
-                await _pusher.UpdateCustomerAsync(customer.Id);
-
-                return new Response("Provkörningen lades till!", save);
-            }
-            catch (Exception e) {
-                return new Response(e.Message + e.InnerException, true);
+            var car = _db.Cars.FirstOrDefault(c => c.Licenseplate == licenseplate);
+            if (car == null)
+            {
+                car = new Car(licenseplate, carName);
+                await _db.Cars.AddAsync(car);
             }
 
-            
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.ExternalId == _http.CurrentUser());
+            if (user == null) return new Response("Privilegiehöjning krävs.", hasError: true);
+
+            var testdrive = new Testdrive();
+            testdrive.AddData(new Customer("Test Person", "test"), car, user);
+
+            await _db.AddAsync(testdrive);
+            var error = await _db.SaveChangesAsync() == 0;
+
+            await _pusher.UpdateTestdrivesAsync();
+            await _pusher.UpdateCustomerAsync(testdrive.Customer.Id);
+
+            return new Response("Provkörningen lades till!", hasError: error);
         }
     }
 }

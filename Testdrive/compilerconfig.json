@@ -4,10 +4,6 @@
     "inputFile": "ClientApp/css/sass/spinners.scss"
   },
   {
-    "outputFile": "ClientApp/css/sass/tables.css",
-    "inputFile": "ClientApp/css/sass/tables.scss"
-  },
-  {
     "outputFile": "ClientApp/css/sass/site.css",
     "inputFile": "ClientApp/css/sass/site.scss"
   },
