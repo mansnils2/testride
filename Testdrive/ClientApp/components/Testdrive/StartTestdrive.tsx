@@ -57,7 +57,7 @@ export class StartTestdrive extends React.Component<{}, LocalState> {
 					message: `Registrera provkörning för ${lp + ' - ' + name}!`
 				});
 			})
-			.catch(_ => this.errorInApiCall());
+			.catch(() => this.errorInApiCall());
 	}
 
 	errorInApiCall() {
