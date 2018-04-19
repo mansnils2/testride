@@ -30,16 +30,16 @@ Sadly, no. There's still a couple of things left, and here's a list:
 A brief summary of how and of what this app is put together of.
 
 ### Technology used
-Our app uses Entity Framework coupled with GraphQL to create a powerful backend / API. This API is now only used by our frontend which is written in React {{ with Redux! }}. Furthermore we use cool APIs like Auth0 to power our authentication and Pusher to make verything in our app all realtime!
+Our app uses Entity Framework coupled with GraphQL to create a powerful backend / API. This API is now only used by our frontend which is written in [React](https://reactjs.org/) {{ with [Redux](https://redux.js.org/)! }}. Furthermore we use cool APIs like [Auth0](https://auth0.com/) to power our authentication and [Pusher](https://pusher.com/) to make verything in our app all realtime!
 
 ### Structure
 Yowza! This is ADVANCED so lets have a close look below.
 
 ![alt text](http://i0.kym-cdn.com/photos/images/original/001/151/543/119.jpg)
 
-Well you've gotten this far, so you must be in it for the details. We won't tell you everything, because our API is pretty big and is WAY TOO COMPLEX to explain anyone who isn't familiar with GraphQL or Entity Framework.
+Well you've gotten this far, so you must be in it for the details. We won't tell you everything, because our API is pretty big and is WAY TOO COMPLEX to explain anyone who isn't familiar with [GraphQL](http://graphql.org/GraphQL) or [Entity Framework](https://docs.microsoft.com/en-us/ef/core/).
 
-But if you'd like, you can read up on GraphQL here and Entity Framework here.
+But if you'd like, you can read up on GraphQL [here](http://graphql.org/GraphQL) and Entity Framework [here](https://docs.microsoft.com/en-us/ef/core/).
 
 But lets get down to the business of why you're here (which is probably to review our client-code). The client-code is located in the folder ClientApp, which has the following sub-folders:
 
