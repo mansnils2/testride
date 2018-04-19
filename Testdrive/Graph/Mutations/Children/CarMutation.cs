@@ -1,7 +1,6 @@
 ﻿using GraphQL.Types;
 using TestRide.Graph.Repositories.Cars;
 using TestRide.Graph.Types;
-using TestRide.Models;
 
 namespace TestRide.Graph.Mutations.Children
 {
@@ -9,13 +8,7 @@ namespace TestRide.Graph.Mutations.Children
     {
         public CarMutation(ICarRepository repo)
         {
-            Field<BooleanGraphType>(
-                "addCar",
-                resolve: context =>
-                {
-                    repo.Add(new Car());
-                    return repo.SaveChangesAsync();
-                });
+            
         }
     }
 }

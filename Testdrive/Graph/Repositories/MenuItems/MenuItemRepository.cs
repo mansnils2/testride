@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using TestRide.Data;
+using TestRide.Extensions;
 using TestRide.Models;
 
 namespace TestRide.Graph.Repositories.MenuItems
@@ -23,9 +22,7 @@ namespace TestRide.Graph.Repositories.MenuItems
 
         public async Task<List<MenuItem>> MyMenuItems()
         {
-            var user = _http.HttpContext.User.Claims
-                .FirstOrDefault(c => c.Type == "name")
-                ?.Value;
+            var user = _http.CurrentUser();
 
             var roles = await _db.Users
                 .AsNoTracking()

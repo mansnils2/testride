@@ -21,6 +21,7 @@ using TestRide.Graph.Repositories.Customers;
 using TestRide.Graph.Repositories.MenuItems;
 using TestRide.Graph.Repositories.Testdrives;
 using TestRide.Graph.Repositories.Users;
+using TestRide.Services.PusherHandler;
 
 namespace TestRide.Extensions
 {
@@ -161,6 +162,8 @@ namespace TestRide.Extensions
         {
             // we inject the httpcontext to fetch users backend
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddTransient<IPusherHandler, PusherHandler>();
         }
     }
 }

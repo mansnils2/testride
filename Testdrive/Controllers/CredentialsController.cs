@@ -16,5 +16,12 @@ namespace TestRide.Controllers
             token = _config.GetConnectionString("CarInfoToken"),
             url = _config.GetConnectionString("CarInfoRoute")
         });
+
+        [HttpGet("pusher")]
+        public JsonResult PusherCredentials() => Json(new
+        {
+            key = _config.GetConnectionString("PusherKey"),
+            cluster = _config.GetConnectionString("PusherCluster")
+        });
     }
 }

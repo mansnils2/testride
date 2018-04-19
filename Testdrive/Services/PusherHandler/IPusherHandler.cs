@@ -5,7 +5,7 @@ namespace TestRide.Services.PusherHandler
 {
     public interface IPusherHandler
     {
-        Task<HttpStatusCode> UpdateTestdrivesAsync(int? facilityId = null);
+        Task<HttpStatusCode> UpdateTestdrivesAsync();
         Task<HttpStatusCode> UpdateCustomerAsync(int id);
     }
 }

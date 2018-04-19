@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using TestRide.Extensions;
+﻿using TestRide.Extensions;
 using TestRide.Graph.Models;
 
 namespace TestRide.Models
@@ -12,25 +10,21 @@ namespace TestRide.Models
             Timestamp = UnixTime.Now();
         }
 
-        [Key]
+        public void AddData(Customer customer, User user, Car car)
+        {
+            Customer = customer;
+            Car = car;
+            User = user;
+        }
+
         public int Id { get; set; }
 
         public long Timestamp { get; set; }
 
-
-        public int CustomerId { get; set; }
-
-        [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
 
-        public int CarId { get; set; }
-
-        [ForeignKey("CarId")]
         public virtual Car Car { get; set; }
 
-        public int UserId { get; set; }
-
-        [ForeignKey("UserId")]
         public virtual User User { get; set; }
     }
 }

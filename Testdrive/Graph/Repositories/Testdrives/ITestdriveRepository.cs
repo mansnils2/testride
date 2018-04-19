@@ -7,5 +7,7 @@ namespace TestRide.Graph.Repositories.Testdrives
     public interface ITestdriveRepository : IBaseRepository<Testdrive, int>
     {
         Task<List<Testdrive>> MyTestdrives();
+
+        Task<Response> AddTestdriveAsync(string licenseplate, string carName);
     }
 }

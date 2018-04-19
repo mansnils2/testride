@@ -26,13 +26,7 @@ namespace TestRide.Graph.Repositories
 
         Task<TEntity> Get(TKey id, IEnumerable<string> includes);
 
-        TEntity Add(TEntity entity);
-
-        void AddRange(IEnumerable<TEntity> entities);
-
-        void Delete(TKey id);
-
-        void Update(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
 
         Task<bool> SaveChangesAsync();
 

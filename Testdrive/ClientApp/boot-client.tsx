@@ -25,13 +25,18 @@ const store = configureStore(history, initialState);
 function renderApp() {
     // This code starts up the React app when it runs in a browser. It sets up the routing configuration
     // and injects the app into a DOM element.
-	const pusherClient = new Pusher('',
-		{
-			cluster: 'eu',
-			encrypted: true
-		});
+	fetch('credentials/pusher', { credentials: 'include' })
+		.then(response => response.json())
+		.then(data => {
+			const pusherClient = new Pusher(data.key,
+				{
+					cluster: data.cluster,
+					encrypted: true
+				});
 
-	setPusherClient(pusherClient);
+			setPusherClient(pusherClient);
+		})
+		.catch();
 
     ReactDOM.render(
         <AppContainer>

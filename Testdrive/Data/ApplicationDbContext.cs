@@ -9,7 +9,7 @@ namespace TestRide.Data
 
         public DbSet<Car> Cars { get; set; }
 
-        public DbSet<Car> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<User> Users { get; set; }
 

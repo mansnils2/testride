@@ -1,68 +1,67 @@
-﻿using Ride.Library.Helpers.Extensions;
-using Ride.Library.Services.PusherClient;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using PusherServer;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Ride.Core.Services.Secrets;
+using TestRide.Data;
 
-namespace Ride.Core.Services.PusherHandler
+namespace TestRide.Services.PusherHandler
 {
-    public class PusherHandler : PusherClient, IPusherHandler
+    public class PusherHandler : IPusherHandler
     {
-        private readonly ISecretHandler _secrets;
+        private readonly IConfiguration _config;
 
-        public PusherHandler(ISecretHandler secrets) : base(secrets) => _secrets = secrets;
+        private readonly ApplicationDbContext _db;
 
-        public async Task TriggerJobStateUpdateAsync(string user, int id, string status)
+        public PusherHandler(IConfiguration config, ApplicationDbContext db)
         {
-            // initiate the client
-            var pusher = GetClient();
-            // push the job state update to all connected users on that channel
-            await pusher.TriggerAsync("user-" + user.Caesar().ToLower(), "job-state-update", new {id, status});
+            _config = config;
+            _db = db;
         }
 
-        public async Task TriggerJobStateUpdateAsync(IEnumerable<string> users, int id, string status)
+        private Pusher GetClient()
         {
-            // initiate the client
-            var pusher = GetClient();
-            // push the job state update to all connected users on that channel
-            foreach (var user in users)
-                await pusher.TriggerAsync("user-" + user.Caesar().ToLower(), "job-state-update", new {id, status});
+            var options = new PusherOptions
+            {
+                Cluster = _config.GetConnectionString("PusherCluster"),
+                Encrypted = true
+            };
+
+            var client = new Pusher(
+                _config.GetConnectionString("PusherId"),
+                _config.GetConnectionString("PusherKey"),
+                _config.GetConnectionString("PusherSecret"),
+                options);
+
+            return client;
         }
 
-        public async Task TriggerNotificationAsync(string userId, string text, string url)
+        public async Task<HttpStatusCode> UpdateTestdrivesAsync()
         {
             // initiate the client
             var pusher = GetClient();
-            // push the notification out! every channel is defined
-            // per user, and every user connects to an event-hub
-            // and listens for incoming messages
-            await pusher.TriggerAsync("user-" + userId.Caesar().ToLower(), "new-notification", new {text, url});
-        }
-
-        public async Task UpdatePersonalLeadsAsync(string userId)
-        {
-            // initiate the client
-            var pusher = GetClient();
-            await pusher.TriggerAsync("user-" + userId.Caesar().ToLower(), "update-leads", new { });
-        }
-
-        public async Task<HttpStatusCode> UpdateTestdrivesAsync(int? facilityId = null)
-        {
-            // initiate the client
-            var pusher = GetClient();
-            // trigger the message to the channel for all testdrives,
-            var channel = !facilityId.HasValue ? "testdrives" : "testdrives-" + facilityId;
-            var result = await pusher.TriggerAsync(channel, "new-testdrive", new { token = _secrets.TestdriveKey });
+            var result = await pusher.TriggerAsync("testdrives", "new-testdrive", null);
             return result.StatusCode;
         }
 
-        public async Task<HttpStatusCode> UpdateChatForCarWithIdAsync(int id)
+        public async Task<HttpStatusCode> UpdateCustomerAsync(int id)
         {
             // initiate the client
             var pusher = GetClient();
-            var result = await pusher.TriggerAsync("car-chat-" + id, "new-message", null);
-            // Check statuscode
+            var customer = await _db.Customers
+                .AsNoTracking()
+                .Include(c => c.Testdrives)
+                .Where(c => c.Id == id)
+                .Select(c => new
+                {
+                    id = c.Id,
+                    name = c.Name,
+                    socialSecurityNumber = c.SocialSecurityNumber,
+                    countOfTestdrives = c.Testdrives.Count
+                }).FirstOrDefaultAsync();
+
+            var result = await pusher.TriggerAsync("customers", "new-customer", customer);
             return result.StatusCode;
         }
     }

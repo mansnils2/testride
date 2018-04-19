@@ -73,33 +73,15 @@ namespace TestRide.Graph.Repositories
             return query.SingleOrDefaultAsync(c => c.Id.Equals(id));
         }
 
-        public TEntity Add(TEntity entity)
+        public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
-            _db.Set<TEntity>().Add(entity);
+            await _db.Set<TEntity>().AddAsync(entity);
             return entity;
-        }
-
-        public void AddRange(IEnumerable<TEntity> entities)
-        {
-            _db.Set<TEntity>().AddRange(entities);
-        }
-
-        public virtual void Delete(TKey id)
-        {
-            var entity = new TEntity { Id = id };
-            _db.Set<TEntity>().Attach(entity);
-            _db.Set<TEntity>().Remove(entity);
         }
 
         public virtual async Task<bool> SaveChangesAsync()
         {
             return await _db.SaveChangesAsync() > 0;
-        }
-
-        public virtual void Update(TEntity entity)
-        {
-            _db.Set<TEntity>().Attach(entity);
-            _db.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual Task<int> CountAll(

@@ -59,6 +59,16 @@ export class StartTestdrive extends React.Component<{}, LocalState> {
 		this.setState({ hasError: true, message: 'Det verkar inte gå att hitta någon data på det registreringsnumret.' });
 	}
 
+	addTestdrive() {
+		const mutation =
+			`mutation {
+				addTestdrive(licenseplate: "${this.state.licenseplate}", carName: "${this.state.carName}")
+			}`;
+
+	}
+
+
+
 	render() {
 		return <div className="row" style={{ 'height': '380px' }}>
 			       <div className="bg-dark w-100 position-relative">
