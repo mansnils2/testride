@@ -97,7 +97,7 @@
     "@types/react-tabs": {
       "version": "1.0.4",
       "resolved": "https://registry.npmjs.org/@types/react-tabs/-/react-tabs-1.0.4.tgz",
-      "integrity": "sha1-dH0QwKLQKuRKjpaSAY9U/JbpmWc=",
+      "integrity": "sha512-WEoQWrxxth4E+s8R5JtdpU1+oERuc0yic4ub4hnhDZcpVtVDrKXHo+IMejoLUFEMlEP/X4qPnCH7UgscxFvSPw==",
       "dev": true,
       "requires": {
         "@types/react": "15.0.35"
@@ -752,7 +752,7 @@
     "bootstrap": {
       "version": "4.0.0",
       "resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.0.0.tgz",
-      "integrity": "sha1-zrA4QsFF/MG5tOFdoqBWVrpoRpo=",
+      "integrity": "sha512-gulJE5dGFo6Q61V/whS6VM4WIyrlydXfCgkE+Gxe5hjrJ8rXLLZlALq7zq2RPhOc45PSwQpJkrTnc2KgD6cvmA==",
       "dev": true
     },
     "brace-expansion": {
@@ -2833,7 +2833,7 @@
     "graphql": {
       "version": "0.11.7",
       "resolved": "https://registry.npmjs.org/graphql/-/graphql-0.11.7.tgz",
-      "integrity": "sha1-5auqnLe3zMuE6fCDa/Q3DSaHUMY=",
+      "integrity": "sha512-x7uDjyz8Jx+QPbpCFCMQ8lltnQa4p4vSYHx6ADe8rVYRTdsyhCJbvSty5DAsLVmU6cGakl+r8HQYolKHxk/tiw==",
       "dev": true,
       "requires": {
         "iterall": "1.1.3"
@@ -2856,7 +2856,7 @@
         "graphql": {
           "version": "0.12.3",
           "resolved": "https://registry.npmjs.org/graphql/-/graphql-0.12.3.tgz",
-          "integrity": "sha1-EWaEWLvigmHA3LbiZfUVunn2zgc=",
+          "integrity": "sha512-Hn9rdu4zacplKXNrLCvR8YFiTGnbM4Zw/UH8FDmzBDsH7ou40lSNH4tIlsxcYnz2TGNVJCpu1WxCM23yd6kzhA==",
           "dev": true,
           "requires": {
             "iterall": "1.1.3"
@@ -2879,7 +2879,7 @@
         "graphql": {
           "version": "0.12.3",
           "resolved": "https://registry.npmjs.org/graphql/-/graphql-0.12.3.tgz",
-          "integrity": "sha1-EWaEWLvigmHA3LbiZfUVunn2zgc=",
+          "integrity": "sha512-Hn9rdu4zacplKXNrLCvR8YFiTGnbM4Zw/UH8FDmzBDsH7ou40lSNH4tIlsxcYnz2TGNVJCpu1WxCM23yd6kzhA==",
           "dev": true,
           "requires": {
             "iterall": "1.1.3"
@@ -3441,13 +3441,13 @@
     "iterall": {
       "version": "1.1.3",
       "resolved": "https://registry.npmjs.org/iterall/-/iterall-1.1.3.tgz",
-      "integrity": "sha1-HLv/liBAVt3mZW4u0uIibQ5tcsk=",
+      "integrity": "sha512-Cu/kb+4HiNSejAPhSaN1VukdNTTi/r4/e+yykqjlG/IW+1gZH5b4+Bq3whDX4tvbYugta3r8KTMUiqT3fIGxuQ==",
       "dev": true
     },
     "jquery": {
       "version": "3.3.1",
       "resolved": "https://registry.npmjs.org/jquery/-/jquery-3.3.1.tgz",
-      "integrity": "sha1-lYzinoHJeQ8xvneS311NlfxX+8o=",
+      "integrity": "sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==",
       "dev": true
     },
     "js-base64": {
@@ -4790,7 +4790,7 @@
     "prop-types": {
       "version": "15.6.1",
       "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.6.1.tgz",
-      "integrity": "sha1-NmREU1ZCVd3aORGR+zoSXL32VMo=",
+      "integrity": "sha512-4ec7bY1Y66LymSUOH/zARVYObB23AT2h8cf6e/O6ZALB/N0sqZFEx7rq6EYPX2MkOdKORuooI/H5k9TlR4q7kQ==",
       "dev": true,
       "requires": {
         "fbjs": "0.8.16",
@@ -5066,7 +5066,7 @@
     "react-tabs": {
       "version": "2.2.1",
       "resolved": "https://registry.npmjs.org/react-tabs/-/react-tabs-2.2.1.tgz",
-      "integrity": "sha1-AzHSYXPFbnr0/b+2Il5iaDz92lI=",
+      "integrity": "sha512-Fu1frsfsGUUwxsNQsjQDo1ZuNwyLCXoZcu7jaaeWAP9HlwPpYsUzNQaquA6+6jd4E/uPlBGyBTFW3PpEUOwkVw==",
       "dev": true,
       "requires": {
         "classnames": "2.2.5",
@@ -5168,7 +5168,7 @@
     "redux-persist": {
       "version": "5.9.1",
       "resolved": "https://registry.npmjs.org/redux-persist/-/redux-persist-5.9.1.tgz",
-      "integrity": "sha1-g71KvVJu92j2P87uM4+p2O1lUtY=",
+      "integrity": "sha512-WIaLCd975R16W7nD1wqUPLcqeLztIRvsSSNZdblEjtihL1wz+NSOq9nYUSvsdoWJOtfm9RbDF4IVd0a3VOtZcw==",
       "dev": true
     },
     "redux-thunk": {

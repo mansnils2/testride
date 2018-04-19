@@ -8,7 +8,7 @@ namespace TestRide.Graph.Mutations.Children
     {
         public TestdriveMutation(ITestdriveRepository repo)
         {
-            Field<BooleanGraphType>(
+            Field<ResponseType>(
                 "addTestdrive",
                 arguments: new QueryArguments(
                     new QueryArgument<StringGraphType> {Name = "licenseplate"},
