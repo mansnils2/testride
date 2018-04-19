@@ -87,7 +87,7 @@ export class StartTestdrive extends React.Component<{}, LocalState> {
             return;
         }
 
-        this.setState({ hasError: false, disabled: false, isLoading: false, message: result.data.addTestdrive.message });
+        this.setState({ hasError: false, licenseplate: '', disabled: true, isLoading: false, message: result.data.addTestdrive.message, buttonText: 'Skriv in i rutan ovan' });
     }
 
 	render() {

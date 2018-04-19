@@ -30,7 +30,7 @@ namespace TestRide.Graph.Repositories.Customers
             await _db.Customers.AddAsync(customer);
 
             var save = await _db.SaveChangesAsync();
-            await _pusher.UpdateCustomerAsync(customer.Id);
+            await _pusher.UpdateCustomersAsync();
 
             return save > 0;
         }

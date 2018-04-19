@@ -15,13 +15,12 @@ export class CustomerDashboard extends React.Component<RouteComponentProps<{}>, 
 			customers: []
 		};
 
-		this.addIncomingCustomer = this.addIncomingCustomer.bind(this);
-	}
+        this.reloadCustomers = this.reloadCustomers.bind(this);
+    }
 
-	componentDidMount() {
-		const body = {
-			query: 
-				`{
+    customerdata = {
+        query:
+            `{
 					customers(include: "Testdrives") {
 						id
 						name
@@ -29,9 +28,12 @@ export class CustomerDashboard extends React.Component<RouteComponentProps<{}>, 
 						countOfTestdrives
 					}
 				}`
-		};
+    };
+
+	componentDidMount() {
+		
 		graphCall(
-			body,
+			this.customerdata,
 			(result) => this.setState({ customers: result.data.customers, isLoading: false }),
 			() => this.setState({ hasError: true, isLoading: false }));
 	}
@@ -44,10 +46,11 @@ export class CustomerDashboard extends React.Component<RouteComponentProps<{}>, 
 		return this.state.hasError ? <Greeting title="Det uppstod ett fel" text="Det uppstod tyvärr ett fel medan kunderna sammanställdes." /> : this.renderCustomers();
 	}
 
-	addIncomingCustomer(data) {
-		const customers = this.state.customers;
-		customers.unshift(data);
-		this.setState({ customers: customers });
+	reloadCustomers() {
+	    graphCall(
+	        this.customerdata,
+	        (result) => this.setState({ customers: result.data.customers }),
+	        console.log);
 	}
 
 	renderCustomers() {
@@ -74,7 +77,7 @@ export class CustomerDashboard extends React.Component<RouteComponentProps<{}>, 
 		});
 
 		return <div>
-			<Pusher channel="customers" event="new-customer" onUpdate={this.addIncomingCustomer} />
+            <Pusher channel="customers" event="new-customer" onUpdate={this.reloadCustomers} />
 			<Table rows={customers} />
 		</div>;
 	}

@@ -45,7 +45,7 @@ namespace TestRide.Graph.Repositories.Testdrives
             var car = _db.Cars.FirstOrDefault(c => c.Licenseplate == licenseplate);
             if (car == null)
             {
-                car = new Car(licenseplate, carName);
+                car = new Car(licenseplate.ToUpper(), carName);
                 await _db.Cars.AddAsync(car);
             }
 
@@ -59,7 +59,7 @@ namespace TestRide.Graph.Repositories.Testdrives
             var error = await _db.SaveChangesAsync() == 0;
 
             await _pusher.UpdateTestdrivesAsync();
-            await _pusher.UpdateCustomerAsync(testdrive.Customer.Id);
+            await _pusher.UpdateCustomersAsync();
 
             return new Response("Provkörningen lades till!", hasError: error);
         }

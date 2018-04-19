@@ -45,23 +45,11 @@ namespace TestRide.Services.PusherHandler
             return result.StatusCode;
         }
 
-        public async Task<HttpStatusCode> UpdateCustomerAsync(int id)
+        public async Task<HttpStatusCode> UpdateCustomersAsync()
         {
             // initiate the client
             var pusher = GetClient();
-            var customer = await _db.Customers
-                .AsNoTracking()
-                .Include(c => c.Testdrives)
-                .Where(c => c.Id == id)
-                .Select(c => new
-                {
-                    id = c.Id,
-                    name = c.Name,
-                    socialSecurityNumber = c.SocialSecurityNumber,
-                    countOfTestdrives = c.Testdrives.Count
-                }).FirstOrDefaultAsync();
-
-            var result = await pusher.TriggerAsync("customers", "new-customer", customer);
+            var result = await pusher.TriggerAsync("customers", "new-customer", null);
             return result.StatusCode;
         }
     }
